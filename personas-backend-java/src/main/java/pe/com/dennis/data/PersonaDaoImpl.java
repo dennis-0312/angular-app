@@ -18,22 +18,23 @@ public class PersonaDaoImpl implements PersonaDao{
 
     @Override
     public Persona encontrarPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Persona.class, persona.getIdPersona());
     }
 
     @Override
     public void insertarPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.persist(persona);
+        em.flush();
     }
 
     @Override
     public void actualizarPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.merge(persona);
     }
 
     @Override
     public void eliminarPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.remove(em.merge(persona));
     }
     
 }
